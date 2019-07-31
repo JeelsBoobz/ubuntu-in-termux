@@ -71,6 +71,7 @@ if [ -n "\$(ls -A ubuntu-binds)" ]; then
 fi
 command+=" -b /dev"
 command+=" -b /proc"
+command+=" -b /sys"
 command+=" -b ubuntu-fs/tmp:/dev/shm"
 command+=" -b /data/data/com.termux"
 command+=" -b /:/host-rootfs"
