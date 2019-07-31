@@ -94,5 +94,5 @@ termux-fix-shebang $bin
 echo "making $bin executable"
 chmod +x $bin
 echo "removing image for some space"
-rm ubuntu.tar.gz -rf
+rm -Rf ubuntu.tar.gz
 echo "You can now launch Ubuntu with the ./start script"
