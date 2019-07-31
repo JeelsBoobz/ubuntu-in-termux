@@ -48,7 +48,7 @@ if [ "$first" != 1 ];then
     cd $cur
 fi
 mkdir -p ubuntu-binds
-bin=start.sh
+bin=start
 echo "writing launch script"
 cat > $bin <<- EOM
 #!/bin/bash
@@ -95,4 +95,4 @@ echo "making $bin executable"
 chmod +x $bin
 echo "removing image for some space"
 rm ubuntu.tar.gz -rf
-echo "You can now launch Ubuntu with the ./start.sh script"
+echo "You can now launch Ubuntu with the ./start script"
