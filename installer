@@ -69,7 +69,7 @@ command+=" -b /proc"
 command+=" -b /sys"
 command+=" -b ubuntu-fs/tmp:/dev/shm"
 ## uncomment the following line to have access to the home directory of termux
-command+=" -b /data/data/com.termux/files/home:/root"
+#command+=" -b /data/data/com.termux/files/home:/root"
 command+=" -b /:/host-rootfs"
 command+=" -b /sdcard"
 command+=" -b /storage"
