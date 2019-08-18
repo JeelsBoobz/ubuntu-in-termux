@@ -6,6 +6,7 @@ if [ -d "$folder" ]; then
     echo "skipping downloading"
 elif [ -z "$(command -v proot)" ]; then
     echo "Install proot and execute"
+    apt install proot resolv-conf -y
     exit 1
 fi
 if [ "$first" != 1 ];then
@@ -67,6 +68,7 @@ fi
 command+=" -b /dev"
 command+=" -b /proc"
 command+=" -b /sys"
+command+=" -b $PREFIX/etc/resolv.conf:/etc/resolv.conf"
 command+=" -b ubuntu-fs/tmp:/dev/shm"
 ## uncomment the following line to have access to the home directory of termux
 #command+=" -b /data/data/com.termux/files/home:/root"
