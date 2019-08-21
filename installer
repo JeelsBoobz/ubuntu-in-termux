@@ -51,19 +51,19 @@ cat > $bin <<- EOM
 cd \$(dirname \$0)
 
 ## fix resolv.conf
-if [[ "$( getprop net.dns1 )" ]]; then
-	nameserver1="nameserver $( getprop net.dns1 )\n"
+if [[ "\$( getprop net.dns1 )" ]]; then
+	nameserver1="nameserver \$( getprop net.dns1 )\n"
 fi
-if [[ "$( getprop net.dns2 )" ]]; then
-	nameserver2="nameserver $( getprop net.dns2 )\n"
+if [[ "\$( getprop net.dns2 )" ]]; then
+	nameserver2="nameserver \$( getprop net.dns2 )\n"
 fi
-if [[ "$( getprop net.dns3 )" ]]; then
-	nameserver3="nameserver $( getprop net.dns3 )\n"
+if [[ "\$( getprop net.dns3 )" ]]; then
+	nameserver3="nameserver \$( getprop net.dns3 )\n"
 fi
-if [[ "$( getprop net.dns4 )" ]]; then
-	nameserver4="nameserver $( getprop net.dns4 )\n"
+if [[ "\$( getprop net.dns4 )" ]]; then
+	nameserver4="nameserver \$( getprop net.dns4 )\n"
 fi
-echo -e "${nameserver1}${nameserver2}${nameserver3}${nameserver4}" > $folder/etc/resolv.conf
+echo -e "\${nameserver1}\${nameserver2}\${nameserver3}\${nameserver4}" > $folder/etc/resolv.conf
 
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
