@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
+
 folder=ubuntu-fs
 VERSION="19.04"
 if [ -d "$folder" ]; then
