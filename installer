@@ -48,6 +48,7 @@ echo "writing launch script"
 cat > $bin <<- EOM
 #!/bin/bash
 cd \$(dirname \$0)
+
 ## fix resolv.conf
 if [[ "$( getprop net.dns1 )" ]]; then
 	nameserver1="nameserver $( getprop net.dns1 )\n"
@@ -61,7 +62,7 @@ fi
 if [[ "$( getprop net.dns4 )" ]]; then
 	nameserver4="nameserver $( getprop net.dns4 )\n"
 fi
-echo -e "${nameserver1}${nameserver2}${nameserver3}${nameserver4}" > ubuntu-fs/etc/resolv.conf
+echo -e "${nameserver1}${nameserver2}${nameserver3}${nameserver4}" > $folder/etc/resolv.conf
 
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
@@ -77,7 +78,7 @@ fi
 command+=" -b /dev"
 command+=" -b /proc"
 command+=" -b /sys"
-command+=" -b ubuntu-fs/tmp:/dev/shm"
+command+=" -b $folder/tmp:/dev/shm"
 ## uncomment the following line to have access to the home directory of termux
 #command+=" -b /data/data/com.termux/files/home:/root"
 command+=" -b /:/host-rootfs"
@@ -91,7 +92,7 @@ command+=" HOME=/root"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games"
 command+=" TERM=\$TERM"
 command+=" LANG=C.UTF-8"
-command+=" $( cat ubuntu-fs/etc/passwd | grep root | awk -F":" '{print $7}' ) --login"
+command+=" $( cat $folder/etc/passwd | grep root | awk -F":" '{print $7}' ) --login"
 com="\$@"
 if [ -z "\$1" ];then
     exec \$command
